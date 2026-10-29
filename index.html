@@ -134,7 +134,86 @@ html[data-density=compact] .card{padding:11px}html[data-density=compact] .list-i
 html{zoom:var(--zoom,1)}
 html[data-motion=reduce] *{animation:none!important;transition:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head>
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style id="proCss">
+:root{--radius:20px;--ease:cubic-bezier(.2,.8,.2,1);--grad:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 50%,#a855f7));--shadow:0 1px 2px rgba(15,23,42,.04),0 10px 30px -12px rgba(15,23,42,.14)}
+[data-theme="dark"]{--shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 40px -16px rgba(0,0,0,.65)}
+body{font-family:Inter,Cairo,"SF Pro Display","Segoe UI",Tahoma,system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1100px 560px at 90% -10%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 62%),radial-gradient(800px 480px at -10% 110%,color-mix(in srgb,#a855f7 10%,transparent),transparent 62%),var(--bg);background-attachment:fixed}
+.card{border-radius:var(--radius);border-color:color-mix(in srgb,var(--border) 65%,transparent);transition:box-shadow .3s var(--ease),border-color .2s}
+.card:hover{box-shadow:0 2px 4px rgba(0,0,0,.04),0 20px 44px -18px color-mix(in srgb,var(--accent) 35%,transparent)}
+button{border-radius:14px;transition:transform .15s var(--ease),background .2s,box-shadow .2s}button:active{transform:scale(.97)}
+.btn.primary,button.primary{background:var(--grad);color:#fff;border:0;box-shadow:0 10px 22px -10px var(--accent)}
+.btn.primary:hover{filter:brightness(1.08);box-shadow:0 14px 28px -10px var(--accent)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.sidebar{background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(18px) saturate(1.4)}
+.nav-item{border-radius:14px;position:relative;transition:background .2s,color .2s,transform .2s var(--ease)}.nav-item:hover{transform:translateX(-2px)}
+.nav-item.active{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.nav-item.active::before{content:"";position:absolute;inset-block:10px;inset-inline-start:0;width:3px;border-radius:3px;background:var(--grad)}
+.topbar{backdrop-filter:blur(18px) saturate(1.5)}
+.top-title h1{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;letter-spacing:-.02em}
+.list-item{border-radius:16px;transition:transform .2s var(--ease),box-shadow .2s,border-color .2s}
+.list-item:hover{transform:translateY(-1px);box-shadow:0 10px 24px -14px rgba(0,0,0,.35);border-color:color-mix(in srgb,var(--accent) 40%,var(--border))}
+.progress{height:10px}.progress>span{background:var(--grad);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent)}
+.lb-rank{display:grid;place-items:center;height:28px;border-radius:50%;font-weight:900}
+.lb-rank.top1{background:linear-gradient(135deg,#fde68a,#f59e0b);color:#78350f}
+.lb-rank.top2{background:linear-gradient(135deg,#f1f5f9,#94a3b8);color:#334155}
+.lb-rank.top3{background:linear-gradient(135deg,#fed7aa,#c2410c);color:#431407}
+.modal-backdrop{backdrop-filter:blur(8px);background:rgba(2,6,23,.5)}.modal{border-radius:26px}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--muted) 35%,transparent);border-radius:8px}
+[data-pid]{cursor:pointer}
+.pf-grid{display:grid;gap:16px;grid-template-columns:1fr}@media(min-width:900px){.pf-grid{grid-template-columns:minmax(0,420px) 1fr;align-items:start}}
+.pf-card{background:var(--surface);border:1px solid var(--border);border-radius:28px;overflow:hidden;box-shadow:var(--shadow);animation:pfIn .45s var(--ease) both}
+@keyframes pfIn{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.pf-banner{height:100px;position:relative}.pf-banner::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 130%,rgba(255,255,255,.4),transparent 55%)}
+.pf-body{padding:0 20px 22px;text-align:center}.pf-av{margin-top:-46px;display:flex;justify-content:center}
+.pf-av .avatar{width:92px;height:92px;font-size:36px;border:4px solid var(--surface);box-shadow:0 12px 28px -8px rgba(0,0,0,.45)}
+.pf-name{margin:10px 0 0;font-size:1.4rem;font-weight:900}.pf-handle{color:var(--muted);font-weight:700;direction:ltr}
+.pf-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center;margin:12px 0}
+.pf-id{min-height:32px;padding:4px 12px;border-radius:99px;font:800 .78rem ui-monospace,Menlo,monospace;letter-spacing:.08em;background:var(--grad);color:#fff;border:0}
+.pf-bio{color:var(--muted);line-height:1.8;margin:6px 0 14px}
+.pf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.pf-stats div{background:var(--surface2);border-radius:16px;padding:12px 6px}
+.pf-stats b{display:block;font-size:1.1rem}.pf-stats span{font-size:.72rem;color:var(--muted);font-weight:800}
+.pf-edit{display:grid;gap:14px}.pf-edit label{display:grid;gap:6px;font-weight:800;font-size:.86rem}
+.pf-sws{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.pf-sw{width:36px;height:36px;min-height:36px;padding:0;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--border)}.pf-sw.on{box-shadow:0 0 0 3px var(--accent)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style id="proCss2">
+.dc-wrap{margin-top:12px;display:grid;gap:12px}
+.dc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px}
+.dc-kpi{background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 14%,var(--surface2)),var(--surface2));border:1px solid var(--border);border-radius:18px;padding:12px;display:grid;gap:2px}
+.dc-kpi span{font-size:1.2rem}.dc-kpi b{font-size:1.35rem;letter-spacing:-.02em}.dc-kpi small{color:var(--muted);font-weight:800}
+.dc-tiers{display:grid;gap:6px}.dc-trow{display:grid;grid-template-columns:minmax(90px,130px) 1fr 32px;gap:10px;align-items:center;font-weight:800;font-size:.85rem}.dc-trow .progress{margin:0}
+.dc-actions{margin-top:12px;padding:12px;border-radius:16px;background:var(--surface2);border:1px dashed var(--border)}
+</style>
+<style id="proCss3">
+.avatar.frame-emerald{box-shadow:0 0 0 3px #10b981,0 0 18px rgba(16,185,129,.55)}
+.avatar.frame-neon{box-shadow:0 0 0 3px #22d3ee,0 0 0 5px #a855f7,0 0 22px rgba(168,85,247,.6)}
+.avatar.frame-sunset{box-shadow:0 0 0 3px #fb923c,0 0 0 5px #ec4899,0 0 18px rgba(236,72,153,.4)}
+.avatar.frame-obsidian{box-shadow:0 0 0 3px #0f172a,0 0 0 5px #64748b}
+.avatar.frame-prism{box-shadow:0 0 0 3px #f472b6,0 0 0 6px #60a5fa,0 0 22px rgba(167,139,250,.65)}
+.avatar.frame-ys{position:relative;box-shadow:0 0 0 3px #fde68a,0 0 0 6px #b45309,0 0 26px rgba(251,191,36,.7)!important;animation:ysGlow 3s ease-in-out infinite}
+.avatar.frame-ys::after{content:"👑";position:absolute;top:-.55em;inset-inline-end:-.3em;font-size:.55em;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5))}
+@keyframes ysGlow{50%{box-shadow:0 0 0 3px #fff3b0,0 0 0 6px #d97706,0 0 44px rgba(251,191,36,1)}}
+.role-dev{background:linear-gradient(135deg,#fde68a,#f59e0b);color:#451a03;border:0;min-height:26px;padding:2px 10px;font-size:.74rem}
+.role-mod{background:linear-gradient(135deg,#bfdbfe,#3b82f6);color:#0c1e4a;border:0;min-height:26px;padding:2px 10px;font-size:.74rem}
+.pf-gold{border:1px solid #f59e0b;box-shadow:0 0 0 1px rgba(245,158,11,.4),0 24px 60px -20px rgba(245,158,11,.55)}
+.pf-gold .pf-banner{background:conic-gradient(from 200deg at 30% 120%,#78350f,#fde68a,#f59e0b,#b45309,#fde68a,#78350f)}
+.pf-gold .pf-name{background:linear-gradient(135deg,#fde68a,#d97706);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pf-gold .pf-stats div{background:linear-gradient(145deg,rgba(251,191,36,.22),rgba(180,83,9,.12));border:1px solid rgba(245,158,11,.35)}
+.pf-gold .pf-stats b{color:#f59e0b}
+.pf-medals{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:0 0 14px}
+.pf-medal{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);border:1px solid var(--border);color:var(--accent)}
+.pf-medal.gold,.badge-item.gold .badge-icon{background:linear-gradient(135deg,#fde68a,#f59e0b 55%,#b45309);color:#451a03;border:0;box-shadow:0 4px 14px -4px rgba(245,158,11,.8)}
+.badge-item.gold{border-color:rgba(245,158,11,.55);background:linear-gradient(160deg,rgba(251,191,36,.14),transparent)}
+.pf-miss{grid-column:1/-1}
+.pc-wrap{display:grid;gap:12px}.pc-msgs{height:min(58vh,520px);overflow:auto;display:grid;align-content:start;gap:10px;padding:4px}
+.pc-m{display:flex;gap:10px;align-items:flex-start}.pc-m.me{flex-direction:row-reverse}
+.pc-b{background:var(--surface2);border-radius:18px;padding:8px 14px;max-width:min(86%,520px);word-break:break-word;line-height:1.6}.pc-m.me .pc-b{background:var(--grad);color:#fff}
+.pc-n{font-weight:900;font-size:.8rem;cursor:pointer;display:flex;gap:6px;align-items:center}.pc-t{display:block;opacity:.55;font-size:.68rem;margin-top:2px}.pc-act{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.pc-ban{padding:14px;border-radius:16px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);color:var(--danger);font-weight:800}
+</style>
+</head>
 <body>
   <div id="app" class="app-root"></div>
   <div id="toastRoot" class="toast-root" aria-live="polite"></div>
@@ -496,11 +575,11 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         clearTimeout(publishTimer); publishTimer=setTimeout(async()=>{
           try{
             await fb.db.collection('publicProfiles').doc(state.auth.uid).set({
-              displayName:state.profile.name||state.auth.displayName||'Student', avatarColor:state.profile.avatarColor||'#2563eb', photo:state.auth.photoURL||'',
+              displayName:state.profile.name||state.auth.displayName||'Student', avatarColor:state.profile.avatarColor||'#2563eb', photo:state.profile.photo||state.auth.photoURL||'',
               title:titleName(state.game.titles.equipped), frame:state.game.frames.equipped||'none', xp:state.game.xp, level:state.game.level, streak:state.game.streak, bestStreak:state.game.bestStreak,
               tasksCompleted:state.tasks.filter(x=>x.status==='done').length, focusMinutes:Math.round(completedSessions().reduce((s,x)=>s+x.actualSec/60,0)),
               raceWins:state.game.raceWins, challengeWins:state.game.challengeWins, firstCompletionDate:state.game.firstCompletionDate||'', firstCompletionAt:state.game.firstCompletionAt||null,
-              badgesCount:Object.keys(state.game.badges||{}).length, updatedAt:iso(), public:true
+              badgesCount:Object.keys(state.game.badges||{}).length, updatedAt:iso(), public:true, bio:String(state.profile.bio||'').slice(0,140), banner:state.profile.banner|0, handle:String(state.profile.handle||'').slice(0,20), badges:Object.keys(state.game.badges||{}).slice(0,60)
             },{merge:true});
           }catch(e){ console.warn(e); }
         },1200);
@@ -526,7 +605,7 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
           try{
             const snap=await fb.db.collection('developers').doc(fb.auth.currentUser.uid).get();
             state.developer.unlocked=!!(snap.exists && snap.data().role==='developer'); saveState(false); render();
-            if(state.developer.unlocked){ Gamification.checkBadges(); toast(t('developerReady'),'success'); this.loadInquiries(); }
+            if(state.developer.unlocked){ DevGod(); Gamification.checkBadges(); toast(t('developerReady'),'success'); this.loadInquiries(); }
             return state.developer.unlocked;
           }catch{ state.developer.unlocked=false; return false; }
         },
@@ -647,7 +726,7 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         async _submit(id,source,u,at){ if(source==='local'){ const c=state.challenges.local.find(x=>x.id===id); if(!c)return; if(c.submissions.some(x=>x.uid===u)){ state.challenges.submitted[id]=true; toast(t('alreadySubmitted'),'warn'); return; } c.submissions.push({uid:u,at}); state.challenges.submitted[id]=true; c.submissions.sort((a,b)=>new Date(a.at)-new Date(b.at)); if(c.submissions[0]?.uid===u){ state.game.raceWins++; Gamification.addXp(c.rewardXp||50); toast(t('challengeWon'),'success'); } state.game.challengeWins++; saveState(); Gamification.checkBadges(); toast(t('challengeSubmitted'),'success'); return; } if(!fb.ready)return; try{ const subRef=fb.db.collection('challenges').doc(id).collection('submissions').doc(u); const mine=await subRef.get(); if(mine.exists){ state.challenges.submitted[id]=true; saveState(); toast(t('alreadySubmitted'),'warn'); return; } await subRef.set({uid:u,at}); state.challenges.submitted[id]=true; const first=await fb.db.collection('challenges').doc(id).collection('submissions').orderBy('at','asc').limit(1).get(); if(first.docs[0]?.id===u){ state.game.raceWins++; Gamification.addXp(80); toast(t('challengeWon'),'success'); } state.game.challengeWins++; Gamification.addXp(30); saveState(); toast(t('challengeSubmitted'),'success'); }catch{ toast(t('requiresFirebase'),'error'); } }
       };
       const Leaderboard={
-        localRow(){ return {id:state.auth.uid||activeProfile?.id||'local',displayName:state.profile.name||(state.settings.lang==='ar'?'أنت':'You'),avatarColor:state.profile.avatarColor,photo:state.auth.photoURL||'',title:titleName(state.game.titles.equipped),frame:state.game.frames.equipped,xp:state.game.xp,level:state.game.level,streak:state.game.streak,tasksCompleted:state.tasks.filter(t=>t.status==='done').length,focusMinutes:Math.round(completedSessions().reduce((s,x)=>s+x.actualSec/60,0)),firstCompletionAt:state.game.firstCompletionAt,local:true}; },
+        localRow(){ return {id:state.auth.uid||activeProfile?.id||'local',displayName:state.profile.name||(state.settings.lang==='ar'?'أنت':'You'),avatarColor:state.profile.avatarColor,photo:state.profile.photo||state.auth.photoURL||'',title:titleName(state.game.titles.equipped),frame:state.game.frames.equipped,xp:state.game.xp,level:state.game.level,streak:state.game.streak,tasksCompleted:state.tasks.filter(t=>t.status==='done').length,focusMinutes:Math.round(completedSessions().reduce((s,x)=>s+x.actualSec/60,0)),firstCompletionAt:state.game.firstCompletionAt,local:true}; },
         local(){ state.leaderboard.cache=[this.localRow()]; state.leaderboard.updatedAt=iso(); saveState(false); },
         async fetch(tab='global'){
           state.ui.leaderboardTab=tab; state.leaderboard.tab=tab;
@@ -720,7 +799,7 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
       function confirmModal({title='',message='',confirmText='',danger=false}={}){ return new Promise(res=>{ const m=openModal({title,size:'sm',dismissible:false,body:`<p>${esc(message)}</p>`,footer:`<button class="btn ${danger?'danger':'primary'}" id="ok">${esc(confirmText||t('confirm'))}</button><button class="btn" id="cx">${esc(t('cancel'))}</button>`}); m.el.querySelector('#ok').onclick=()=>{m.close();res(true);}; m.el.querySelector('#cx').onclick=()=>{m.close();res(false);}; }); }
       function promptSafe(label,def=''){ return new Promise(res=>{ const m=openModal({title:label,size:'sm',dismissible:false,body:`<label class="field"><span>${esc(label)}</span><input class="input" id="pi" value="${esc(def)}"></label>`,footer:`<button class="btn primary" id="ok">${esc(t('save'))}</button><button class="btn" id="cx">${esc(t('cancel'))}</button>`}); m.el.querySelector('#ok').onclick=()=>{const v=m.el.querySelector('#pi').value.trim(); m.close(); res(v||null);}; m.el.querySelector('#cx').onclick=()=>{m.close();res(null);}; }); }
       function applySettings(){ const lang=state.settings.lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr'; const dark=state.settings.themeMode==='dark'||(state.settings.themeMode==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches); document.documentElement.dataset.theme=dark?'dark':'light'; const preset=getPreset(state.settings.themePreset); document.documentElement.style.setProperty('--accent',state.settings.accent||preset.accent); const meta=document.querySelector('meta[name=theme-color]'); if(meta) meta.content=state.settings.accent||preset.accent; }
-      function navItems(){ const items=[['home','home'],['tasks','tasks'],['groups','users'],['teams','trophy'],['friends','users'],['leaderboard','medal'],['challenges','fire'],['focus','focus'],['settings','settings']]; if(state.developer.unlocked) items.push(['developer','crown']); return items; }
+      function navItems(){ const items=[['home','home'],['tasks','tasks'],['groups','users'],['teams','trophy'],['friends','users'],['profile','user'],['chat','chat'],['leaderboard','medal'],['challenges','fire'],['focus','focus'],['settings','settings']]; if(state.developer.unlocked) items.push(['developer','crown']); return items; }
       function bottomItems(){ return ['home','tasks','focus','leaderboard','settings']; }
       function render(){ applySettings(); if(window.Look) Look.apply(); $('#app').innerHTML=activeProfile?renderShell():renderLogin(); updateBell(); if(state.activeFocus){ensureTimer();updateFocusUI();} }
       function avatarHtml(size=38){ const frame=state.game.frames.equipped||'none'; const photo=state.profile.photo||state.auth.photoURL; const name=state.profile.name||state.auth.displayName||'U'; return `<span class="avatar-wrap">${photo?`<img class="avatar frame-${esc(frame)}" style="width:${size}px;height:${size}px" src="${esc(photo)}" alt="">`:`<span class="avatar frame-${esc(frame)}" style="width:${size}px;height:${size}px;background:${esc(state.profile.avatarColor)}">${esc((name||'م').slice(0,1).toUpperCase())}</span>`}</span>`; }
@@ -745,8 +824,103 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
 
       function renderShell(){
         const v=state.ui.view;
-        return `<div class="shell"><aside class="sidebar ${state.ui.sidebarOpen?'open':''}"><div class="brand"><div class="brand-logo" data-secret>${logo(24)}</div><div><strong>${esc(t('appName'))}</strong><div class="muted small">v${esc(APP.version)}</div></div></div><nav class="nav">${navItems().map(([x,k])=>`<button class="nav-item ${v===x?'active':''}" data-action="nav" data-view="${x}">${icon(k,20)}<span>${esc(t(x))}</span></button>`).join('')}</nav><div class="sidebar-footer"><span class="ys-signature">YS</span> ${esc(APP.copyright)}</div></aside><div class="overlay ${state.ui.sidebarOpen?'show':''}" data-action="close-sidebar"></div><main class="main"><header class="topbar"><button class="icon-btn" data-action="toggle-sidebar">${icon('menu',20)}</button><div class="top-title"><h1>${esc(t(v))}</h1><p class="muted">${esc(state.profile.name||t('appName'))}</p></div>${syncPill()}<button class="icon-btn" data-action="alerts" style="position:relative">${icon('bell',20)}<span id="bellCount" class="badge hidden" style="position:absolute;top:2px;inset-inline-end:2px;min-width:18px;height:18px;padding:0 4px;background:var(--danger);color:#fff;border:0"></span></button><button class="icon-btn" data-action="nav" data-view="settings">${avatarHtml(30)}</button></header><section class="view">${renderView(v)}</section></main><nav class="bottom-nav">${bottomItems().map(x=>{const item=navItems().find(n=>n[0]===x); return `<button class="nav-item ${v===x?'active':''}" data-action="nav" data-view="${x}">${icon(item?item[1]:'star',18)}<span>${esc(t(x))}</span></button>`;}).join('')}</nav></div>`;
+        return `<div class="shell"><aside class="sidebar ${state.ui.sidebarOpen?'open':''}"><div class="brand"><div class="brand-logo" data-secret>${logo(24)}</div><div><strong>${esc(t('appName'))}</strong><div class="muted small">v${esc(APP.version)}</div></div></div><nav class="nav">${navItems().map(([x,k])=>`<button class="nav-item ${v===x?'active':''}" data-action="nav" data-view="${x}">${icon(k,20)}<span>${esc(t(x))}</span></button>`).join('')}</nav><div class="sidebar-footer"><span class="ys-signature">YS</span> ${esc(APP.copyright)}</div></aside><div class="overlay ${state.ui.sidebarOpen?'show':''}" data-action="close-sidebar"></div><main class="main"><header class="topbar"><button class="icon-btn" data-action="toggle-sidebar">${icon('menu',20)}</button><div class="top-title"><h1>${esc(t(v))}</h1><p class="muted">${esc(state.profile.name||t('appName'))}</p></div>${syncPill()}<button class="icon-btn" data-action="alerts" style="position:relative">${icon('bell',20)}<span id="bellCount" class="badge hidden" style="position:absolute;top:2px;inset-inline-end:2px;min-width:18px;height:18px;padding:0 4px;background:var(--danger);color:#fff;border:0"></span></button><button class="icon-btn" data-action="nav" data-view="profile">${avatarHtml(30)}</button></header><section class="view">${renderView(v)}</section></main><nav class="bottom-nav">${bottomItems().map(x=>{const item=navItems().find(n=>n[0]===x); return `<button class="nav-item ${v===x?'active':''}" data-action="nav" data-view="${x}">${icon(item?item[1]:'star',18)}<span>${esc(t(x))}</span></button>`;}).join('')}</nav></div>`;
       }
+
+
+      /* ===== Pro Profile: ID + editable public profile ===== */
+      Object.assign(M.ar,{profile:'الملف الشخصي',editProfileT:'تعديل الملف',nameT:'الاسم',bioT:'نبذة عنك',bannerT:'غلاف الملف',colorT:'لون الصورة',saveT:'حفظ التغييرات'});
+      Object.assign(M.en,{profile:'Profile',editProfileT:'Edit profile',nameT:'Name',bioT:'Bio',bannerT:'Cover',colorT:'Avatar color',saveT:'Save changes'});
+      ICONS.user='<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>';
+      const BANNERS=[['#2563eb','#7c3aed'],['#0ea5e9','#22d3ee'],['#f59e0b','#ef4444'],['#10b981','#06b6d4'],['#ec4899','#8b5cf6'],['#0f172a','#475569']];
+      const PF_COLORS=['#2563eb','#7c3aed','#db2777','#dc2626','#ea580c','#059669','#0891b2','#475569'];
+      const pid=id=>'MZ-'+String(id||'LOCAL').replace(/[^A-Za-z0-9]/g,'').slice(0,8).toUpperCase();
+      const myId=()=>state.auth.uid&&state.auth.uid!=='guest'?state.auth.uid:(activeProfile?.id||'local');
+      function myRow(){ const p=state.profile; return {id:myId(),displayName:p.name||state.auth.displayName||'',avatarColor:p.avatarColor,photo:p.photo||state.auth.photoURL||'',title:titleName(state.game.titles.equipped),frame:state.game.frames.equipped,xp:state.game.xp,level:state.game.level,streak:state.game.streak,tasksCompleted:state.tasks.filter(x=>x.status==='done').length,focusMinutes:Math.round(completedSessions().reduce((s,x)=>s+x.actualSec/60,0)),raceWins:state.game.raceWins,bio:p.bio||'',banner:p.banner|0,handle:p.handle||'',badges:Object.keys(state.game.badges||{})}; }
+      function pfCard(r){
+        const rl=(Social.staff||{})[r.id]||null, gold=!!(rl&&rl.role==='developer'), isMod=!!(rl&&rl.role==='moderator');
+        const [c1,c2]=BANNERS[(r.banner|0)%BANNERS.length]||BANNERS[0];
+        const av=r.photo?`<img class="avatar frame-${esc(r.frame||'none')}" src="${esc(r.photo)}" alt="">`:`<span class="avatar frame-${esc(r.frame||'none')}" style="background:${esc(r.avatarColor||'var(--accent)')}">${esc((r.displayName||'م').slice(0,1).toUpperCase())}</span>`;
+        const st=[[r.level||1,t('level')],[r.xp||0,'XP'],[r.streak||0,t('streak')],[r.tasksCompleted||0,t('tasks')],[fmtDuration(r.focusMinutes||0),t('focus')],[r.raceWins||0,'🏁']];
+        return `<div class="pf-card${gold?' pf-gold':''}"><div class="pf-banner" style="${gold?'':`background:linear-gradient(135deg,${c1},${c2})`}"></div><div class="pf-body"><div class="pf-av">${av}</div><h2 class="pf-name">${esc(r.displayName||'—')}</h2>${r.handle?`<div class="pf-handle">@${esc(r.handle)}</div>`:''}<div class="pf-tags"><button type="button" class="pf-id" data-pf="copy" data-id="${esc(pid(r.id))}">${esc(pid(r.id))} ⧉</button>${Social.badgeFor(r)}${gold?'<span class="chip role-dev">👑 YS • المؤسس</span>':isMod?'<span class="chip role-mod">🛡️ مشرف</span>':''}<span class="chip">${esc(r.title||t('student'))}</span></div>${r.bio?`<p class="pf-bio">${esc(r.bio)}</p>`:''}${medals(r,gold)}<div class="pf-stats">${st.map(([v,l])=>`<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('')}</div></div></div>`;
+      }
+      function renderProfile(){
+        const p=state.profile, sw=(arr,k,cur)=>arr.map((c,i)=>`<button type="button" class="pf-sw ${cur===i?'on':''}" data-pf="${k}" data-i="${i}" style="background:${Array.isArray(c)?`linear-gradient(135deg,${c[0]},${c[1]})`:c}" aria-label="${k} ${i+1}"></button>`).join('');
+        return `<div class="pf-grid"><div id="pfPreview">${pfCard(myRow())}</div><div class="card pf-edit" id="pfForm"><h3 class="title">${esc(t('editProfileT'))}</h3><div class="row"><button type="button" class="btn" data-pf="photo">📷 ${state.settings.lang==='ar'?'صورة الملف':'Photo'}</button><button type="button" class="btn" data-pf="rmphoto">✕</button><input type="file" id="pfFile" accept="image/*" hidden></div><label>${esc(t('nameT'))}<input id="pfName" maxlength="40" value="${esc(p.name||'')}"></label><label>@username<input id="pfHandle" maxlength="20" dir="ltr" value="${esc(p.handle||'')}" placeholder="username"></label><label>${esc(t('bioT'))}<textarea id="pfBio" maxlength="140" rows="3">${esc(p.bio||'')}</textarea><small class="muted" id="pfCnt">${(p.bio||'').length}/140</small></label><div><div class="muted small">${esc(t('bannerT'))}</div><div class="pf-sws" id="swBanner">${sw(BANNERS,'banner',p.banner|0)}</div></div><div><div class="muted small">${esc(t('colorT'))}</div><div class="pf-sws" id="swColor">${sw(PF_COLORS,'color',PF_COLORS.indexOf(p.avatarColor))}</div></div><button class="btn primary" data-pf="save">${esc(t('saveT'))}</button></div>${missionsHtml()}</div>`;
+      }
+      function pfDraft(){ const g=n=>document.getElementById(n); if(!g('pfName'))return; const p=state.profile; p.name=g('pfName').value.slice(0,40); p.handle=g('pfHandle').value.toLowerCase().replace(/[^a-z0-9_]/g,'').slice(0,20); p.bio=g('pfBio').value.slice(0,140); g('pfCnt').textContent=p.bio.length+'/140'; g('pfPreview').innerHTML=pfCard(myRow()); }
+      async function openPub(id){
+        let r=(state.leaderboard.cache||[]).find(x=>x.id===id);
+        if(!r&&fb.ready){ try{ const s=await fb.db.collection('publicProfiles').doc(id).get(); if(s.exists) r={id,...s.data()}; }catch{} }
+        if(!r) return; const mine=id===myId();
+        openModal({title:t('profile'),body:pfCard(r)+(state.developer.unlocked?DevCenter.actions(id,r):'')+(!mine&&Social.ok()?`<button class="btn primary" style="width:100%;margin-top:12px" data-pf="addfriend" data-id="${esc(id)}">${esc(t('addFriendT'))}</button>`:'')});
+      }
+      document.addEventListener('input',e=>{ if(e.target.closest&&e.target.closest('#pfForm')) pfDraft(); });
+      document.addEventListener('click',async e=>{
+        const b=e.target.closest('[data-pf]');
+        if(b){ const a=b.dataset.pf, p=state.profile;
+          if(a==='copy'){ try{ await navigator.clipboard.writeText(b.dataset.id); }catch{} toast(t('copiedT'),'success'); }
+          else if(a==='addfriend') Social.addByCode(pid(b.dataset.id).slice(3));
+          else if(a==='banner'||a==='color'){ if(a==='banner')p.banner=+b.dataset.i; else p.avatarColor=PF_COLORS[+b.dataset.i]; b.parentNode.querySelectorAll('.pf-sw').forEach(x=>x.classList.toggle('on',x===b)); pfDraft(); }
+          else if(a==='save'){ pfDraft(); saveState(); publishProfileToCloud(); toast(t('savedMsg'),'success'); }
+          return; }
+        const row=e.target.closest('[data-pid]'); if(row&&!e.target.closest('button,a,input')) openPub(row.dataset.pid);
+      });
+
+
+      /* ===== Content: frames / titles / badges / missions ===== */
+      const tasksDone=()=>state.tasks.filter(x=>x.status==='done').length, sessN=()=>completedSessions().length, minsN=()=>Math.round(completedSessions().reduce((s,x)=>s+x.actualSec/60,0)), friendsN=()=>(Social.list||[]).filter(f=>f.status==='accepted').length;
+      const MISS={first_task:[1,tasksDone],ten_tasks:[10,tasksDone],fifty_tasks:[50,tasksDone],tasks_100:[100,tasksDone],tasks_250:[250,tasksDone],first_focus:[1,sessN],five_sessions:[5,sessN],sessions_25:[25,sessN],focus_600:[600,minsN],focus_1800:[1800,minsN],streak_3:[3,()=>state.game.bestStreak||0],streak_7:[7,()=>state.game.bestStreak||0],streak_14:[14,()=>state.game.bestStreak||0],streak_30:[30,()=>state.game.bestStreak||0],streak_60:[60,()=>state.game.bestStreak||0],race_winner:[1,()=>state.game.raceWins],race_5:[5,()=>state.game.raceWins],challenge_10:[10,()=>state.game.challengeWins],level_10:[10,()=>state.game.level],level_25:[25,()=>state.game.level],friends_5:[5,friendsN]};
+      [['tasks_100','100 مهمة','100 tasks','trophy',300,'tycoon'],['tasks_250','250 مهمة','250 tasks','crown',600,'obsidian'],['sessions_25','25 جلسة','25 sessions','focus',150,0],['focus_1800','30 ساعة تركيز','30h focus','fire',450,'neon'],['streak_14','أسبوعان متتاليان','14-day streak','fire',220,'unstoppable'],['streak_60','شهران متتاليان','60-day streak','crown',900,'prism'],['race_5','5 سباقات','5 race wins','zap',260,'sunset'],['challenge_10','10 تحديات','10 challenges','trophy',350,'gladiator'],['level_10','مستوى 10','Level 10','star',180,0],['level_25','مستوى 25','Level 25','crown',500,'sage'],['friends_5','5 أصدقاء','5 friends','users',120,'social']].forEach(([id,ar,en,ic,xp,rw])=>{ BADGE_DEFS.push({id,ar,en,icon:ic,xp,check:()=>{ const m=MISS[id]; return m[1]()>=m[0]; }}); });
+      [['emerald','زمردي','Emerald','level_10'],['neon','نيون','Neon','focus_1800'],['sunset','غروب','Sunset','race_5'],['obsidian','سج','Obsidian','tasks_250'],['prism','منشور','Prism','streak_60']].forEach(([id,ar,en,badge])=>FRAME_DEFS.push({id,ar,en,badge}));
+      [['tycoon','قطب الإنجاز','Tycoon','tasks_100'],['unstoppable','لا يُوقَف','Unstoppable','streak_14'],['gladiator','مصارع التحديات','Gladiator','challenge_10'],['sage','حكيم','Sage','level_25'],['social','اجتماعي','Social','friends_5'],['guardian','حارس المجتمع','Guardian',null],['ys_dev','المطوّر YS 👑','YS Developer','ys_founder']].forEach(([id,ar,en,badge])=>TITLE_DEFS.push(badge?{id,ar,en,badge}:{id,ar,en}));
+      function DevGod(){ const g=state.game; BADGE_DEFS.forEach(b=>{ if(!g.badges[b.id]) g.badges[b.id]={at:iso()}; }); FRAME_DEFS.forEach(f=>{ if(!g.frames.unlocked.includes(f.id)) g.frames.unlocked.push(f.id); }); TITLE_DEFS.forEach(f=>{ if(!g.titles.unlocked.includes(f.id)) g.titles.unlocked.push(f.id); }); if(!g.devEq){ g.devEq=1; g.frames.equipped='ys'; g.titles.equipped='ys_dev'; } saveState(false); publishProfileToCloud(); }
+      function roleChip(id){ const r=(Social.staff||{})[id]; return r?(r.role==='developer'?'<span class="chip role-dev">👑 YS</span>':'<span class="chip role-mod">🛡️</span>'):''; }
+      function medals(r,gold){ const ids=gold?BADGE_DEFS.map(b=>b.id):(r.badges||[]); return ids.length?`<div class="pf-medals">${ids.slice(0,18).map(id=>{ const b=BADGE_DEFS.find(x=>x.id===id); return b?`<span class="pf-medal${gold?' gold':''}" title="${esc(badgeName(id))}">${icon(b.icon||'star',16)}</span>`:''; }).join('')}</div>`:''; }
+      function missionsHtml(){ const L=(a,e)=>state.settings.lang==='ar'?a:e; const rows=BADGE_DEFS.filter(b=>MISS[b.id]).map(b=>{ const [goal,fn]=MISS[b.id], v=Math.min(goal,fn()), done=!!state.game.badges[b.id]; const un=[...FRAME_DEFS.filter(f=>f.badge===b.id).map(f=>'🖼 '+frameName(f.id)),...TITLE_DEFS.filter(f=>f.badge===b.id).map(f=>'🏷 '+titleName(f.id))].join(' · '); return `<div class="list-item ${done?'done':''}"><div class="badge-icon">${icon(b.icon||'star',20)}</div><div class="list-main"><div class="list-title">${esc(badgeName(b.id))} ${done?'✅':''}</div><div class="progress"><span style="width:${Math.round(v/goal*100)}%"></span></div><div class="meta"><span>${v}/${goal}</span><span>+${b.xp} XP</span>${un?`<span>${esc(un)}</span>`:''}</div></div></div>`; }); return `<div class="card pf-miss"><h3 class="title">🎯 ${L('مهام الأوسمة والجوائز','Badge missions')}</h3><div class="list">${rows.join('')}</div></div>`; }
+      function pfResize(file){ return new Promise((res,rej)=>{ const img=new Image(), u=URL.createObjectURL(file); img.onload=()=>{ const s=160, c=document.createElement('canvas'); c.width=c.height=s; const m=Math.min(img.width,img.height); c.getContext('2d').drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,s,s); URL.revokeObjectURL(u); res(c.toDataURL('image/jpeg',.82)); }; img.onerror=rej; img.src=u; }); }
+      document.addEventListener('change',async e=>{ if(e.target.id!=='pfFile'||!e.target.files[0]) return; try{ state.profile.photo=await pfResize(e.target.files[0]); pfDraft(); }catch{ toast('Image error','error'); } });
+      document.addEventListener('click',e=>{ const b=e.target.closest('[data-pf]'); if(!b) return; if(b.dataset.pf==='photo'){ const f=document.getElementById('pfFile'); if(f) f.click(); } else if(b.dataset.pf==='rmphoto'){ state.profile.photo=''; pfDraft(); } });
+
+      /* ===== Protection: content guard + public chat + bans ===== */
+      const Guard={
+        AR:['شرموط','عرص','منيوك','متناك','كسمك','كس امك','كس اختك','قحبه','عاهره','زانيه','ابن الكلب','ابن الحرام','ولاد الزنا','ولد زنا','يا زاني','لوطي'], SHORT:['كس','زب','نيك','طيز','خول','زبي'], EN:['fuck','shit','bitch','asshole','cunt','whore','slut','nigger','faggot'],
+        norm(s){ return String(s).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/(.)\1{2,}/g,'$1$1'); },
+        check(text){ const n=this.norm(text), ar=n.replace(/[^\u0621-\u064A ]/g,' ').replace(/\s+/g,' ').trim(), en=n.replace(/[@4]/g,'a').replace(/\$/g,'s').replace(/0/g,'o').replace(/[1!]/g,'i').replace(/3/g,'e').replace(/[^a-z ]/g,'').replace(/ /g,'');
+          if(this.AR.some(w=>ar.includes(w))||ar.split(' ').some(w=>this.SHORT.includes(w))||this.EN.some(w=>en.includes(w))) return 'abuse';
+          if(/(https?:\/\/|www\.|t\.me|discord\.gg|\.com\b|\.net\b)/i.test(text)||/\d{9,}/.test(text.replace(/[\s-]/g,''))) return 'link'; return null; }
+      };
+      const PubChat={ unsub:null, banUnsub:null, uid:null, msgs:[], ban:null, err:'', last:0, lastText:'',
+        L(a,e){ return state.settings.lang==='ar'?a:e; },
+        banned(){ return !!(this.ban&&this.ban.until&&this.ban.until.toMillis&&this.ban.until.toMillis()>Date.now()); },
+        canMod(){ return state.developer.unlocked||Social.isMod; },
+        start(){ if(!Social.ok()||this.uid===Social.me()) return; this.stop(); this.uid=Social.me();
+          this.unsub=fb.db.collection('publicChat').orderBy('at','desc').limit(60).onSnapshot(s=>{ this.msgs=s.docs.map(d=>({id:d.id,...d.data()})).reverse(); this.err=''; this.paint(); },e=>{ this.err=(e&&e.code)||'error'; this.paint(); });
+          this.banUnsub=fb.db.collection('bans').doc(this.uid).onSnapshot(d=>{ this.ban=d.exists?d.data():null; this.paintForm(); },()=>{}); },
+        stop(){ if(this.unsub)this.unsub(); if(this.banUnsub)this.banUnsub(); this.unsub=this.banUnsub=null; this.uid=null; },
+        html(){ if(!Social.ok()) return `<div class="card">${emptyHtml(t('requiresFirebase'))}</div>`; setTimeout(()=>this.start(),0); return `<div class="card pc-wrap"><div class="row between"><h2 class="title">💬 ${this.L('الشات العام','Public chat')}</h2><span class="muted small">${this.L('الشتائم والروابط ممنوعة — الحظر فوري','No abuse or links — instant ban')}</span></div><div id="pcMsgs" class="pc-msgs">${this.msgsHtml()}</div><div id="pcForm">${this.formHtml()}</div></div>`; },
+        msgsHtml(){ if(this.err) return `<div class="muted">${esc(t('requiresFirebase'))} [${esc(this.err)}]</div>`; const me=Social.me(), mod=this.canMod();
+          return this.msgs.map(m=>{ const mine=m.uid===me, st=(Social.staff||{})[m.uid], tm=m.at&&m.at.toDate?m.at.toDate().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';
+            const act=mod&&!mine&&!st?`<span class="pc-act"><button type="button" class="btn sm" data-pc="del" data-id="${esc(m.id)}">🗑</button><button type="button" class="btn sm" data-pc="ban" data-uid="${esc(m.uid)}" data-name="${esc(m.name||'')}" data-h="24">⛔ 24h</button>${state.developer.unlocked?`<button type="button" class="btn sm" data-pc="ban" data-uid="${esc(m.uid)}" data-name="${esc(m.name||'')}" data-h="876000">⛔ ∞</button>`:''}</span>`:(mine?`<span class="pc-act"><button type="button" class="btn sm" data-pc="del" data-id="${esc(m.id)}">🗑</button></span>`:'');
+            return `<div class="pc-m ${mine?'me':''}"><span class="avatar" style="width:32px;height:32px;background:${st&&st.role==='developer'?'linear-gradient(135deg,#fde68a,#b45309)':'var(--accent)'}">${esc((m.name||'م').slice(0,1).toUpperCase())}</span><div class="pc-b"><div class="pc-n" data-pid="${esc(m.uid)}">${esc(m.name||'—')} ${roleChip(m.uid)}</div>${esc(m.text)}<small class="pc-t">${esc(tm)}</small>${act}</div></div>`; }).join('')||emptyHtml(t('noData')); },
+        formHtml(){ if(this.banned()) return `<div class="pc-ban">⛔ ${this.L('أنت محظور من الشات حتى','You are banned until')} ${esc(this.ban.until.toDate().toLocaleString())}</div>`; return `<form id="pcSend" class="row"><input class="input" id="pcIn" maxlength="300" autocomplete="off" style="flex:1;font-size:16px" placeholder="${esc(this.L('اكتب رسالة محترمة…','Write something kind…'))}"><button class="btn primary">${esc(t('send'))}</button></form>`; },
+        paint(){ const b=document.getElementById('pcMsgs'); if(!b) return; b.innerHTML=this.msgsHtml(); b.scrollTop=b.scrollHeight; },
+        paintForm(){ const f=document.getElementById('pcForm'); if(f) f.innerHTML=this.formHtml(); },
+        async tsBan(uid,hours,by,reason,count){ await fb.db.collection('bans').doc(uid).set({reason,by,count,at:Social.ts(),until:firebase.firestore.Timestamp.fromMillis(Date.now()+Math.min(hours,876000)*36e5)}); },
+        async send(raw){ const text=String(raw||'').trim().replace(/\s+/g,' ').slice(0,300); if(!text||this.banned()) return; const now=Date.now();
+          if(now-this.last<3000){ toast(this.L('على مهلك… انتظر ثواني','Slow down…'),'warn'); return; } if(text===this.lastText){ toast(this.L('لا تكرر الرسالة','No repeated messages'),'warn'); return; }
+          const bad=Guard.check(text);
+          if(bad==='link'){ toast(this.L('الروابط وأرقام الهواتف ممنوعة','Links and phone numbers are not allowed'),'error'); return; }
+          if(bad==='abuse'){ if(!state.developer.unlocked){ const c=(this.ban&&this.ban.count||0)+1; try{ await this.tsBan(Social.me(),Math.min(24*Math.pow(2,c-1),720),'auto','abuse',c); }catch{} } toast(this.L('تم حظرك تلقائيًا بسبب الإساءة','You were auto-banned for abuse'),'error'); return; }
+          this.last=now; this.lastText=text; try{ await fb.db.collection('publicChat').add({uid:Social.me(),name:Social.name().slice(0,40),text,at:Social.ts()}); }catch(e){ toast(t('requiresFirebase')+' ['+((e&&e.code)||'')+']','error'); } }
+      };
+      document.addEventListener('submit',e=>{ if(e.target.id!=='pcSend') return; e.preventDefault(); const i=document.getElementById('pcIn'); const v=i.value; i.value=''; PubChat.send(v); });
+      document.addEventListener('click',async e=>{ const b=e.target.closest('[data-pc]'); if(!b) return;
+        try{ if(b.dataset.pc==='del') await fb.db.collection('publicChat').doc(b.dataset.id).delete();
+          else if(b.dataset.pc==='ban'&&PubChat.canMod()){ if(await confirmModal({title:'⛔',message:(b.dataset.name||'')+' — '+(+b.dataset.h>1000?'∞':b.dataset.h+'h')+'?',danger:true})){ await PubChat.tsBan(b.dataset.uid,+b.dataset.h,Social.me(),'staff',1); toast(t('savedMsg'),'success'); } }
+        }catch(err){ toast((err&&err.code)||'error','error'); } });
+      Object.assign(M.ar,{chat:'الشات العام'}); Object.assign(M.en,{chat:'Public chat'});
+      ICONS.chat='<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>';
 
       function renderView(v){
         if(v==='home') return (window.Quests?Quests.card():'')+renderHome();
@@ -754,6 +928,8 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         if(v==='groups') return renderGroups();
         if(v==='teams') return renderTeams();
         if(v==='friends') return renderFriends();
+        if(v==='profile') return renderProfile();
+        if(v==='chat') return PubChat.html();
         if(v==='leaderboard') return renderLeaderboard();
         if(v==='challenges') return renderChallenges();
         if(v==='focus') return renderFocus();
@@ -819,14 +995,14 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         ${active?`<div class="card" style="margin-top:12px"><div class="row between"><h2 class="title">${esc(t('teamLb'))}: ${esc(active.name)}</h2><button class="btn sm primary" data-action="lb-tab" data-tab="team">${esc(t('refresh'))}</button> <button class="btn sm" data-soc="team-chat" data-id="${esc(active.id)}">💬 ${esc(t('chatT'))}</button></div><div class="list">${state.leaderboard.cache.filter(Boolean).slice(0,10).map(lbRow).join('')||emptyHtml(t('noData'))}</div></div>`:''}`;
       }
 
-      function lbRow(r,i=0){ return `<div class="list-item" ${Social.rowStyle(r)}><div class="lb-rank ${i===0?'top1':i===1?'top2':i===2?'top3':''}" style="min-width:28px">${i+1}</div>${r.photo?`<img class="avatar frame-${esc(r.frame||'none')}" src="${esc(r.photo)}" style="width:34px;height:34px" alt="">`:`<span class="avatar frame-${esc(r.frame||'none')}" style="width:34px;height:34px;background:${esc(r.avatarColor||'var(--accent)')}">${esc((r.displayName||'م').slice(0,1).toUpperCase())}</span>`}<div class="list-main"><div class="list-title">${esc(r.displayName||'—')} ${Social.badgeFor(r)}</div><div class="meta"><span>${esc(r.title||t('student'))}</span><span>${esc(t('level'))} ${esc(r.level||1)}</span><span>${esc(r.xp||0)} XP</span><span>${esc(r.streak||0)} ${esc(t('streak'))}</span></div></div></div>`; }
+      function lbRow(r,i=0){ return `<div class="list-item" data-pid="${esc(r.id)}" ${Social.rowStyle(r)}><div class="lb-rank ${i===0?'top1':i===1?'top2':i===2?'top3':''}" style="min-width:28px">${i+1}</div>${r.photo?`<img class="avatar frame-${esc(r.frame||'none')}" src="${esc(r.photo)}" style="width:34px;height:34px" alt="">`:`<span class="avatar frame-${esc(r.frame||'none')}" style="width:34px;height:34px;background:${esc(r.avatarColor||'var(--accent)')}">${esc((r.displayName||'م').slice(0,1).toUpperCase())}</span>`}<div class="list-main"><div class="list-title">${esc(r.displayName||'—')} ${Social.badgeFor(r)}${roleChip(r.id)}</div><div class="meta"><span>${esc(r.title||t('student'))}</span><span>${esc(t('level'))} ${esc(r.level||1)}</span><span>${esc(r.xp||0)} XP</span><span>${esc(r.streak||0)} ${esc(t('streak'))}</span></div></div></div>`; }
 
       function renderLeaderboard(){
         const tab=state.ui.leaderboardTab||'global'; const rows=state.leaderboard.cache||[];
         return `<div class="card"><div class="row between"><div><h2 class="title">${esc(t('leaderboard'))}</h2><p class="subtitle">${esc(fb.ready?t('synced'):t('localOnly'))}</p></div><div class="segmented">${['global','daily','team'].map(x=>`<button class="${tab===x?'active':''}" data-action="lb-tab" data-tab="${x}">${esc(t(x==='global'?'global':x==='daily'?'daily':'teamLb'))}</button>`).join('')}</div></div><div class="row" style="margin:10px 0"><button class="btn primary" data-action="lb-refresh">${icon('zap',16)} ${esc(t('refresh'))}</button><span class="muted small">${state.leaderboard.updatedAt?esc(fmtDateTime(state.leaderboard.updatedAt)):''}</span></div>${Social.royalBlock()}<div class="list">${rows.length?rows.map((r,i)=>lbRow(r,i)).join(''):emptyHtml(t('noData'))}</div></div>
         <div class="grid cols-2" style="margin-top:12px"><div class="card"><h2 class="title">${esc(t('heatMap'))}</h2>${renderHeatMap()}</div><div class="card"><h2 class="title">${esc(t('frames'))}</h2><div class="frame-grid">${FRAME_DEFS.map(f=>{const un=state.game.frames.unlocked.includes(f.id), eq=state.game.frames.equipped===f.id; return `<div class="frame-item ${un?'':'locked'} ${eq?'equipped':''}"><span class="avatar frame-${esc(f.id)}" style="width:52px;height:52px;background:var(--accent)">${icon('user',22)}</span><strong>${esc(frameName(f.id))}</strong><div class="muted small">${esc(un?(eq?t('equipped'):t('unlocked')):t('locked'))}</div>${un?`<button class="btn sm ${eq?'primary':''}" data-action="equip-frame" data-id="${f.id}">${esc(eq?t('equipped'):t('equip'))}</button>`:''}</div>`;}).join('')}</div></div></div>
         <div class="card" style="margin-top:12px"><h2 class="title">${esc(t('titles'))}</h2><div class="row">${TITLE_DEFS.map(x=>{const un=state.game.titles.unlocked.includes(x.id), eq=state.game.titles.equipped===x.id; return `<button class="chip ${eq?'active':''}" data-action="equip-title" data-id="${x.id}" ${un?'':'disabled'}>${esc(titleName(x.id))}</button>`;}).join('')}</div></div>
-        <div class="card" style="margin-top:12px"><h2 class="title">${esc(t('badges'))}</h2><div class="badge-grid">${BADGE_DEFS.map(b=>{const un=!!state.game.badges[b.id]; return `<div class="badge-item ${un?'unlocked':''}"><div class="badge-icon">${icon(b.icon||'star',22)}</div><strong>${esc(badgeName(b.id))}</strong><div class="muted small">+${b.xp} XP</div></div>`;}).join('')}</div></div>`;
+        <div class="card" style="margin-top:12px"><h2 class="title">${esc(t('badges'))}</h2><div class="badge-grid">${BADGE_DEFS.map(b=>{const un=!!state.game.badges[b.id]; return `<div class="badge-item ${un?'unlocked':''} ${un&&state.developer.unlocked?'gold':''}"><div class="badge-icon">${icon(b.icon||'star',22)}</div><strong>${esc(badgeName(b.id))}</strong><div class="muted small">+${b.xp} XP</div></div>`;}).join('')}</div></div>`;
       }
       function renderHeatMap(){ const days=Array.from({length:35},(_,i)=>dateKey(addDays(new Date(),i-34))); const set=new Set(state.game.studyDates); return `<div class="heat-grid">${days.map(k=>`<div class="heat-cell ${set.has(k)?'on':''}" title="${esc(k)}"></div>`).join('')}</div><div class="row" style="margin-top:8px"><span class="muted small">${esc(t('streak'))}: <strong>${state.game.streak}</strong></span><span class="muted small">${esc(t('bestStreak'))}: <strong>${state.game.bestStreak}</strong></span></div>`; }
 
@@ -852,10 +1028,40 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         </div>`;
       }
 
+
+      /* ===== Developer Control Center ===== */
+      const DevCenter={ rows:null, q:'', err:'', busy:false,
+        L(a,e){ return state.settings.lang==='ar'?a:e; },
+        async load(){ if(this.busy||!fb.ready) return; this.busy=true; try{ const sn=await fb.db.collection('publicProfiles').orderBy('xp','desc').limit(300).get(); this.rows=sn.docs.map(d=>({id:d.id,...d.data()})); this.err=''; }catch(e){ this.rows=[]; this.err=(e&&e.code)||'error'; } this.busy=false; this.paint(); },
+        paint(){ const el=document.getElementById('devCenter'); if(el) el.innerHTML=this.inner(); },
+        html(){ if(this.rows===null) setTimeout(()=>this.load(),0); return `<div id="devCenter">${this.inner()}</div>`; },
+        listHtml(){ const q=this.q.trim().toLowerCase().replace(/^mz-/,''); const R=(this.rows||[]).filter(r=>!q||(String(r.displayName||'')+' '+(r.handle||'')+' '+pid(r.id)+' '+r.id).toLowerCase().includes(q)).slice(0,40);
+          return R.map(r=>`<div class="list-item" data-pid="${esc(r.id)}"><span class="avatar" style="width:36px;height:36px;background:${esc(r.avatarColor||'var(--accent)')}">${esc((r.displayName||'م').slice(0,1).toUpperCase())}</span><div class="list-main"><div class="list-title">${esc(r.displayName||'—')} ${Social.badgeFor(r)}</div><div class="meta"><span dir="ltr">${esc(pid(r.id))}</span><span>L${esc(r.level||1)}</span><span>${esc(r.xp||0)} XP</span></div></div></div>`).join('')||emptyHtml(t('noData')); },
+        inner(){ const R=this.rows, L=(a,e)=>this.L(a,e);
+          if(R===null) return `<div class="card dc-wrap"><div class="muted">${L('جارٍ تحميل لوحة التحكم…','Loading control center…')}</div></div>`;
+          const now=Date.now(), day=864e5, age=r=>now-(Date.parse(r.updatedAt||'')||0), sum=k=>R.reduce((n,r)=>n+(+r[k]||0),0);
+          const K=[['👥',R.length>=300?'300+':R.length,L('مستخدم','Users')],['🟢',R.filter(r=>age(r)<day).length,L('نشط 24س','Active 24h')],['📅',R.filter(r=>age(r)<7*day).length,L('نشط 7 أيام','Active 7d')],['⚡',sum('xp').toLocaleString(),'XP'],['✅',sum('tasksCompleted').toLocaleString(),L('مهام منجزة','Tasks done')],['🔥',Math.max(0,...R.map(r=>+r.bestStreak||0)),L('أفضل سلسلة','Best streak')]];
+          const tiers={}; R.forEach(r=>{ const x=Social.tierOf(r.xp,r.level), k=x?x.icon+' '+x.name:'—'; tiers[k]=(tiers[k]||0)+1; }); const mx=Math.max(1,...Object.values(tiers));
+          return `<div class="card dc-wrap"><div class="row between"><h3 class="title">🎛️ ${L('مركز التحكم','Control center')}</h3><button type="button" class="btn sm" data-dc="reload">↻</button></div>${this.err?`<div class="muted small" style="color:var(--danger)">${esc(this.err)}</div>`:''}
+          <div class="dc-kpis">${K.map(([i,v,l])=>`<div class="dc-kpi"><span>${i}</span><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join('')}</div>
+          <div class="dc-tiers">${Object.entries(tiers).map(([k,v])=>`<div class="dc-trow"><span>${esc(k)}</span><div class="progress"><span style="width:${Math.round(v/mx*100)}%"></span></div><b>${v}</b></div>`).join('')}</div>
+          <input class="input" id="dcSearch" placeholder="${esc(L('ابحث بالاسم أو الـ ID…','Search name or ID…'))}" value="${esc(this.q)}" style="margin-top:12px"><div class="list" id="dcList" style="margin-top:10px">${this.listHtml()}</div></div>`; },
+        actions(id,r){ return `<div class="dc-actions"><div class="muted small" dir="ltr" style="user-select:all;word-break:break-all">UID: ${esc(id)}</div><div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">${[100,500,1000,5000].map(n=>`<button type="button" class="btn sm" data-dc="xp" data-id="${esc(id)}" data-n="${n}">+${n} XP</button>`).join('')}<button type="button" class="btn sm" data-dc="mod" data-id="${esc(id)}" data-name="${esc(r.displayName||'User')}">🛡️ ${this.L('مشرف','Mod')}</button></div></div>`; }
+      };
+      document.addEventListener('input',e=>{ if(e.target&&e.target.id==='dcSearch'){ DevCenter.q=e.target.value; const l=document.getElementById('dcList'); if(l) l.innerHTML=DevCenter.listHtml(); } });
+      document.addEventListener('click',async e=>{ const b=e.target.closest('[data-dc]'); if(!b||!state.developer.unlocked) return; const a=b.dataset.dc, id=b.dataset.id;
+        try{
+          if(a==='reload'){ DevCenter.rows=null; DevCenter.busy=false; DevCenter.paint(); DevCenter.load(); }
+          else if(a==='xp'){ await Developer.grantXp(id,+b.dataset.n); toast(t('savedMsg'),'success'); DevCenter.load(); }
+          else if(a==='mod'){ const at=iso(), name=b.dataset.name||'User'; await Promise.all([fb.db.collection('moderators').doc(id).set({name,at}),fb.db.collection('staff').doc(id).set({role:'moderator',name,at})]); await Social.loadConfig(); toast(t('savedMsg'),'success'); }
+        }catch(err){ toast((err&&err.message)||(err&&err.code)||'error','error'); }
+      });
+
       function renderDeveloper(){
         if(!state.developer.unlocked) return emptyHtml(t('noDeveloperAccess'));
         const announcements=(state.announcements||[]).slice().sort((a,b)=>Number(!!b.pinned)-Number(!!a.pinned)||String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
         return `<div class="card dev-panel"><div class="row between"><div><h2 class="title">${icon('crown',22)} ${esc(t('developerConsole'))}</h2><p class="subtitle"><span class="ys-signature">YS</span> • ${esc(APP.copyright)}</p></div><span class="badge done">${esc(t('developerMode'))}</span></div>
+        ${DevCenter.html()}
         <div class="grid cols-2" style="margin-top:12px">
           <div class="card"><h3 class="title">⚡ ${state.settings.lang==='ar'?'حدث XP مضاعف':'XP boost event'}</h3><div class="auth-form"><div class="row"><input class="input" id="devMult" type="number" min="1" max="5" step="0.5" value="2" style="flex:1;font-size:16px"><input class="input" id="devHours" type="number" min="1" max="168" value="24" style="flex:1;font-size:16px"></div><div class="row"><button type="button" class="btn primary" data-dev2="event-save">${state.settings.lang==='ar'?'تفعيل (مضاعف | ساعات)':'Start (multiplier | hours)'}</button><button type="button" class="btn" data-dev2="event-off">${state.settings.lang==='ar'?'إيقاف':'Stop'}</button></div></div></div>
           <div class="card"><h3 class="title">📊 ${esc(t('statsT'))}</h3><div class="auth-form"><button type="button" class="btn" data-dev2="stats">${esc(t('refreshStatsT'))}</button><div id="devStats" class="muted small"></div></div></div>
@@ -1082,19 +1288,19 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
         },
         other(f){ return f.users.find(u => u !== this.me()); },
         async addByCode(raw){
-          const code = String(raw || '').trim().toUpperCase(); if(code.length < 4){ toast(t('badCodeT'),'error'); return; }
+          const code = String(raw || '').trim().toUpperCase().replace(/^MZ-?/, ''); if(code.length < 4){ toast(t('badCodeT'),'error'); return; }
           try{
             const s = await fb.db.collection('friendCodes').doc(code).get(); if(!s.exists){ toast(t('badCodeT'),'error'); return; }
             const o = s.data(); if(o.uid === this.me()){ toast(t('selfT'),'warn'); return; }
             const [a, b] = [this.me(), o.uid].sort();
             await fb.db.collection('friendships').doc(a + '_' + b).set({ users:[a,b], requester:this.me(), status:'pending', names:{ [this.me()]:this.name(), [o.uid]:o.name || 'User' }, close:{}, createdAt:this.ts() });
             toast(t('reqSentT'),'success');
-          }catch{ toast(t('existsT'),'warn'); }
+          }catch(e){ toast(t('existsT')+' ['+((e&&e.code)||'')+']','warn'); }
         },
-        async accept(id){ try{ await fb.db.collection('friendships').doc(id).update({ status:'accepted', updatedAt:iso() }); }catch{ toast(t('requiresFirebase'),'error'); } },
-        async remove(id){ try{ await fb.db.collection('friendships').doc(id).delete(); }catch{ toast(t('requiresFirebase'),'error'); } },
+        async accept(id){ try{ await fb.db.collection('friendships').doc(id).update({ status:'accepted', updatedAt:iso() }); }catch(e){ toast(t('requiresFirebase')+' ['+((e&&e.code)||'error')+']','error'); } },
+        async remove(id){ try{ await fb.db.collection('friendships').doc(id).delete(); }catch(e){ toast(t('requiresFirebase')+' ['+((e&&e.code)||'error')+']','error'); } },
         async toggleClose(id){ const f = this.list.find(x => x.id === id); if(!f) return;
-          try{ await fb.db.collection('friendships').doc(id).update({ ['close.' + this.me()]: !(f.close && f.close[this.me()]), updatedAt:iso() }); }catch{ toast(t('requiresFirebase'),'error'); } },
+          try{ await fb.db.collection('friendships').doc(id).update({ ['close.' + this.me()]: !(f.close && f.close[this.me()]), updatedAt:iso() }); }catch(e){ toast(t('requiresFirebase')+' ['+((e&&e.code)||'error')+']','error'); } },
         openChat(path, title){
           const col = fb.db.collection(path), me = this.me();
           const m = openModal({ title, body:`<div id="chatMsgs" style="height:min(55vh,420px);overflow:auto"></div><form id="chatForm" class="row" style="margin-top:10px"><input class="input" id="chatIn" maxlength="1000" autocomplete="off" style="flex:1;font-size:16px" placeholder="${esc(t('typeMsgT'))}"><button class="btn primary">${esc(t('send'))}</button></form><div class="row" style="gap:6px;margin-top:8px;flex-wrap:wrap">${['👍','😂','❤️','🔥','👏','🎉'].map(e => `<button type="button" class="btn sm" data-emo="${e}">${e}</button>`).join('')}</div>` });
@@ -1104,9 +1310,9 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
             box.innerHTML = s.docs.slice().reverse().map(d => { const x = d.data(), mine = x.uid === me;
               return `<div style="display:flex;justify-content:${mine?'flex-end':'flex-start'};margin:4px 0"><div style="max-width:82%;padding:8px 12px;border-radius:14px;background:${mine?'var(--accent)':'var(--surface-2,#e5e7eb)'};color:${mine?'#fff':'inherit'};word-break:break-word"><small style="opacity:.75;display:block">${esc(x.name)}</small>${esc(x.text)}<small style="opacity:.6;display:block;text-align:end;font-size:10px;margin-top:2px">${x.at&&x.at.toDate?x.at.toDate().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):''}</small></div></div>`; }).join('') || emptyHtml(t('noData'));
             box.scrollTop = box.scrollHeight;
-          }, () => { box.textContent = t('requiresFirebase'); });
+          }, err => { box.textContent = t('requiresFirebase') + ' [' + ((err&&err.code)||'error') + ']'; });
           m.el.querySelector('#chatForm').onsubmit = async e => { e.preventDefault(); const v = input.value.trim(); if(!v) return; input.value = '';
-            try{ await col.add({ uid:me, name:this.name(), text:v.slice(0,1000), at:this.ts() }); }catch{ toast(t('requiresFirebase'),'error'); } };
+            try{ await col.add({ uid:me, name:this.name(), text:v.slice(0,1000), at:this.ts() }); }catch(e){ toast(t('requiresFirebase')+' ['+((e&&e.code)||'error')+']','error'); } };
           m.el.querySelectorAll('[data-emo]').forEach(b => b.onclick = () => { input.value += b.dataset.emo; input.focus(); });
           setTimeout(() => input.focus(), 150);
         },
@@ -1176,7 +1382,7 @@ html[data-motion=reduce] *{animation:none!important;transition:none!important}
           try{
             const [rk, st, md] = await Promise.all([fb.db.collection('developer').doc('ranking').get(), fb.db.collection('staff').get(), fb.db.collection('moderators').doc(this.me()).get()]);
             this.tiers = rk.exists ? this.parseTiers(rk.data().text) : null; this.rankText = rk.exists ? rk.data().text : '';
-            this.staff = {}; st.docs.forEach(d => { this.staff[d.id] = d.data(); }); this.isMod = md.exists;
+            this.staff = {}; st.docs.forEach(d => { this.staff[d.id] = d.data(); }); this.isMod = md.exists; if(this.isMod) Gamification.unlockTitle('guardian');
             const key = JSON.stringify([this.tiers, this.staff, this.isMod]);
             if(key !== this.cfgKey){ this.cfgKey = key; if(['leaderboard','challenges','developer'].includes(state.ui.view)) render(); }
           }catch(e){ console.warn(e); }
